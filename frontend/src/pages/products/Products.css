@@ -1,0 +1,8 @@
+.product_banner {
+  position: relative;
+  background-image: url("https://cdn.shopify.com/s/files/1/0852/5099/8550/files/Group_72033.png?v=1714588328");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: fill;
+}
