@@ -9,7 +9,7 @@ const HeroSection: React.FC = () => {
           <div className="img_side min-w-[50%]">
             <img
               className="object-cover object-center"
-              src="https://cdn.shopify.com/s/files/1/0649/1399/8024/files/Main_Banner.png?v=1718142201"
+              src="https://cdn.shopify.com/s/files/1/0649/1399/8024/files/Main_Banner.webp?v=1718298006"
               alt="banner_img"
             />
           </div>

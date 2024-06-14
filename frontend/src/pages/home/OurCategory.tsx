@@ -26,7 +26,7 @@ const OurCategory: React.FC = () => {
             >
               <img
                 alt=""
-                src="https://cdn.shopify.com/s/files/1/0649/1399/8024/files/Categories_Banners.png?v=1718143949"
+                src="https://cdn.shopify.com/s/files/1/0649/1399/8024/files/Categories_Banners.webp?v=1718298006"
                 className="absolute inset-0 h-full w-full object-cover"
               />
 
@@ -49,7 +49,7 @@ const OurCategory: React.FC = () => {
             >
               <img
                 alt=""
-                src="https://cdn.shopify.com/s/files/1/0649/1399/8024/files/Categories_Banners_Body_Wash.png?v=1718143949"
+                src="https://cdn.shopify.com/s/files/1/0649/1399/8024/files/Categories_Banners_Body_Wash.webp?v=1718298005"
                 className="absolute inset-0 h-full w-full object-cover"
               />
 
@@ -72,7 +72,7 @@ const OurCategory: React.FC = () => {
             >
               <img
                 alt=""
-                src="https://cdn.shopify.com/s/files/1/0649/1399/8024/files/Categories_Banners_Hair_Care.png?v=1718143950"
+                src="https://cdn.shopify.com/s/files/1/0649/1399/8024/files/Categories_Banners_Hair_Care.webp?v=1718298005"
                 className="absolute inset-0 h-full w-full object-cover"
               />
 
@@ -95,7 +95,7 @@ const OurCategory: React.FC = () => {
             >
               <img
                 alt=""
-                src="https://cdn.shopify.com/s/files/1/0649/1399/8024/files/Cosmetics.png?v=1718143950"
+                src="https://cdn.shopify.com/s/files/1/0649/1399/8024/files/cosmetic.webp?v=1718298006"
                 className="absolute object-cover w-full h-full"
               />
 

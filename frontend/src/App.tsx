@@ -26,7 +26,7 @@ import { useAppDispatch } from "./app/hooks";
 import { userSessionAsync } from "./features/authSlice";
 import { getLatestProductsAsync } from "./features/productSlice";
 import Footer from "./components/footer/Footer";
-import MyOrders from "./pages/myOrders/MyOrders";
+const MyOrders = React.lazy(() => import("./pages/myOrders/MyOrders"));
 import Loader2 from "./components/Loader";
 import { FaArrowUp } from "react-icons/fa6";
 import "loaders.css/loaders.min.css";
@@ -92,7 +92,7 @@ function App() {
           />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/orders" element={<MyOrders />} />
+          <Route path="/orders" element={ <Suspense fallback={<Loader2 />}><MyOrders /></Suspense>} />
 
           {/* ---------- AUTH ROUTES ---------- */}
           <Route path="/signup" element={<Signup />} />

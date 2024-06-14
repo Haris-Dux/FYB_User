@@ -41,7 +41,7 @@ const AboutSection: React.FC = () => {
             <div className="group img_side lg:w-[50%] overflow-hidden">
               <img
                 className="ransition duration-500 group-hover:scale-105"
-                src="https://cdn.shopify.com/s/files/1/0649/1399/8024/files/Banner_45.png?v=1718142201"
+                src="https://cdn.shopify.com/s/files/1/0649/1399/8024/files/Banner_4.webp?v=1718298006"
                 alt=""
               />
             </div>
