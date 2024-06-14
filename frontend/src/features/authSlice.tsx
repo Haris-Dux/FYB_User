@@ -8,7 +8,7 @@ import { ForgetPassData } from "../auth/ForgetPass";
 
 // API URLs
 const signupUrl = "/api/users/signup";
-const loginUrl = "https://foryourbeauty.shop/api/users/login";
+const loginUrl = "/api/users/login";
 const updateUrl = "/api/users/updateUserInformation";
 const logoutUrl = "/api/users/logout";
 const userSessionUrl = "/api/users/persistUserSession";
@@ -27,6 +27,9 @@ interface User {
     id: string;
   };
 }
+
+
+
 
 // CREATE ASYNC THUNK
 export const createuserAsync = createAsyncThunk(
