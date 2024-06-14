@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { getAllProductsAsync } from "../../features/productSlice";
 
-const RelatedProducts = ({ category }: {category : string | undefined}) => {
+const RelatedProducts = ({ category }: { category: string | undefined }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [slidesToShow, setSlidesToShow] = useState(4);
@@ -16,10 +16,10 @@ const RelatedProducts = ({ category }: {category : string | undefined}) => {
   const page = 1;
 
   useEffect(() => {
-    dispatch(getAllProductsAsync({ category , page }));
-}, [dispatch, category, page]);
+    dispatch(getAllProductsAsync({ category, page }));
+  }, [dispatch, category, page]);
 
-const allproducts = useAppSelector((state) => state.products.products);
+  const allproducts = useAppSelector((state) => state.products.products);
 
   const next = () => {
     if (sliderRef.current) {
@@ -74,13 +74,13 @@ const allproducts = useAppSelector((state) => state.products.products);
   };
 
   // STAR RATING
-const StarRating = ({ rating }: { rating: number }) => {
-  const stars = [];
-  for (let i = 0; i < rating; i++) {
-    stars.push(<FaStar key={i} className="text-[#FFC209]" />);
-  }
-  return <div className="flex">{stars}</div>;
-};
+  const StarRating = ({ rating }: { rating: number }) => {
+    const stars = [];
+    for (let i = 0; i < rating; i++) {
+      stars.push(<FaStar key={i} className="text-[#FFC209]" />);
+    }
+    return <div className="flex">{stars}</div>;
+  };
 
   return (
     <>
@@ -143,48 +143,49 @@ const StarRating = ({ rating }: { rating: number }) => {
           <div className="data">
             <div className="mt-8 sm:mt-12">
               <Slider ref={sliderRef} {...settings}>
-                {allproducts && allproducts?.productData?.map((data: any, index: number) => (
-                  <div
-                    key={index}
-                    onClick={() => handleItemClick(String(data.id))}
-                    className="mx-0 pb-7"
-                  >
-                    <div className="group mb-3 relative group w-60 mx-auto bg-white border border-gray-400 hover-border-2 hover:border-[#EC72AF] cursor-pointer">
-                      <img
-                        className="object-cover w-full h-56"
-                        src={data.image.downloadURL}
-                        alt="products"
-                      />
+                {allproducts &&
+                  allproducts?.productData?.map((data: any, index: number) => (
+                    <div
+                      key={index}
+                      onClick={() => handleItemClick(String(data.id))}
+                      className="mx-0 pb-7"
+                    >
+                      <div className="group mb-3 relative group w-60 mx-auto bg-white border border-gray-400 hover-border-2 hover:border-[#EC72AF] cursor-pointer">
+                        <img
+                          className="object-cover w-full h-56"
+                          src={data.image.downloadURL}
+                          alt="products"
+                        />
 
-                      <div className="py-5 text-center">
-                        <h3 className="playfair mb-2 text-lg font-semibold text-gray-800">
-                          {data.name}
-                        </h3>
+                        <div className="py-5 text-center">
+                          <h3 className="playfair mb-2 text-lg font-semibold text-gray-800">
+                            {data.name}
+                          </h3>
 
-                        {/* STARS */}
-                        <div className="mb-2 flex items-center justify-center gap-1">
-                        {data?.averageRating === 0 ? (
-                                    <FaStar className="text-white" />
-                                  ) : (
-                                    <StarRating rating={data?.averageRating} />
-                                  )}
+                          {/* STARS */}
+                          <div className="mb-2 flex items-center justify-center gap-1">
+                            {data?.averageRating === 0 ? (
+                              <FaStar className="text-white" />
+                            ) : (
+                              <StarRating rating={data?.averageRating} />
+                            )}
+                          </div>
+
+                          <p className="mb-3 text-md text-gray-500">
+                            ({data.category})
+                          </p>
+
+                          <p className="mb-3 text-xl font-semibold text-black">
+                            Rs. {data.price}
+                          </p>
+
+                          <button className="hidden group-hover:block absolute w-28 sm:w-40 -bottom-5 left-0 right-0 text-sm mx-auto py-3 bg-[#EC72AF] text-white font-semibold">
+                            Shop Now
+                          </button>
                         </div>
-
-                        <p className="mb-3 text-md text-gray-500">
-                          ({data.category})
-                        </p>
-
-                        <p className="mb-3 text-xl font-semibold text-black">
-                          ${data.price}
-                        </p>
-
-                        <button className="hidden group-hover:block absolute w-28 sm:w-40 -bottom-5 left-0 right-0 text-sm mx-auto py-3 bg-[#EC72AF] text-white font-semibold">
-                          Shop Now
-                        </button>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               </Slider>
             </div>
 

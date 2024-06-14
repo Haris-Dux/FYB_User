@@ -119,7 +119,7 @@ const Footer: React.FC = () => {
                       onClick={() => handleProducts("Cosmetics")}
                       className="text-white transition hover:text-white hover:underline hover:underline-offset-8"
                     >
-                      Cosmetic
+                      Cosmetics
                     </button>
                   </li>
                 </ul>

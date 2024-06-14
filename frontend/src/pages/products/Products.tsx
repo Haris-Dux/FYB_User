@@ -6,8 +6,7 @@ import { FaStar } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import "./Products.css";
 
-
-const Products : React.FC = () => {
+const Products: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [isCategoryVisible, setIsCategoryVisible] = useState(false);
@@ -66,7 +65,7 @@ const Products : React.FC = () => {
   };
 
   // STAR RATING
-  const StarRating = ({ rating }:{rating:number}) => {
+  const StarRating = ({ rating }: { rating: number }) => {
     const stars = [];
     for (let i = 0; i < rating; i++) {
       stars.push(<FaStar key={i} className="text-[#FFC209]" />);
@@ -191,8 +190,6 @@ const Products : React.FC = () => {
               </div>
             </div>
 
-      
-
             {/* PRODUCTS GRID */}
             <div className="products lg:col-span-3">
               {allproducts.productData?.length === 0 ? (
@@ -204,59 +201,63 @@ const Products : React.FC = () => {
                   <ul className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
                     {!loading ? (
                       <>
-                        {allproducts?.productData?.map((data:any, index:number) => (
-                          <li
-                            key={index}
-                            onClick={() => handleItemClick(String(data.id))}
-                          >
-                            <div className="group mb-5 relative group w-full bg-white border border-gray-400 hover-border-2 hover:border-[#EC72AF] cursor-pointer">
-                              <img
-                                className="object-cover w-full h-56"
-                                src={data?.image.downloadURL}
-                                alt="products"
-                              />
+                        {allproducts?.productData?.map(
+                          (data: any, index: number) => (
+                            <li
+                              key={index}
+                              onClick={() => handleItemClick(String(data.id))}
+                            >
+                              <div className="group mb-5 relative group w-full bg-white border border-gray-400 hover-border-2 hover:border-[#EC72AF] cursor-pointer">
+                                <img
+                                  className="object-cover w-full min-h-56"
+                                  src={data?.image.downloadURL}
+                                  alt="products"
+                                />
 
-                              <div className="py-5 text-center">
-                                <h3 className="playfair mb-2 text-md sm:text-lg font-semibold text-gray-800">
-                                  {data?.name}
-                                </h3>
+                                <div className="py-5 text-center">
+                                  <h3 className="playfair mb-2 text-md sm:text-lg font-semibold text-gray-800">
+                                    {data?.name}
+                                  </h3>
 
-                                <div className="mb-2 flex items-center justify-center gap-1">
-                                  {data?.averageRating === 0 ? (
-                                    <FaStar className="text-white" />
-                                  ) : (
-                                    <StarRating rating={data?.averageRating} />
-                                  )}
-                                </div>
-
-                                <p className="mb-3 text-md text-gray-500">
-                                  ({data.category})
-                                </p>
-
-                                {data.sale_price > 0 ? (
-                                  <div className="flex justify-center items-center gap-2">
-                                    <p className="mb-3 text-md font-semibold text-black">
-                                      Rs. {data.sale_price}
-                                    </p>
-                                    <p className="mb-3 text-md font-semibold text-gray-500 line-through">
-                                      Rs. {data.price}
-                                    </p>
+                                  <div className="mb-2 flex items-center justify-center gap-1">
+                                    {data?.averageRating === 0 ? (
+                                      <FaStar className="text-white" />
+                                    ) : (
+                                      <StarRating
+                                        rating={data?.averageRating}
+                                      />
+                                    )}
                                   </div>
-                                ) : (
-                                  <>
-                                    <p className="mb-3 text-md font-semibold text-black">
-                                      Rs. {data.price}
-                                    </p>
-                                  </>
-                                )}
 
-                                <button className="hidden group-hover:block absolute w-28 sm:w-40 -bottom-5 left-0 right-0 text-sm mx-auto py-3 bg-[#EC72AF] text-white font-semibold">
-                                  Shop Now
-                                </button>
+                                  <p className="mb-3 text-md text-gray-500">
+                                    ({data.category})
+                                  </p>
+
+                                  {data.sale_price > 0 ? (
+                                    <div className="flex justify-center items-center gap-2">
+                                      <p className="mb-3 text-md font-semibold text-black">
+                                        Rs. {data.sale_price}
+                                      </p>
+                                      <p className="mb-3 text-md font-semibold text-gray-500 line-through">
+                                        Rs. {data.price}
+                                      </p>
+                                    </div>
+                                  ) : (
+                                    <>
+                                      <p className="mb-3 text-md font-semibold text-black">
+                                        Rs. {data.price}
+                                      </p>
+                                    </>
+                                  )}
+
+                                  <button className="hidden group-hover:block absolute w-28 sm:w-40 -bottom-5 left-0 right-0 text-sm mx-auto py-3 bg-[#EC72AF] text-white font-semibold">
+                                    Shop Now
+                                  </button>
+                                </div>
                               </div>
-                            </div>
-                          </li>
-                        ))}
+                            </li>
+                          )
+                        )}
                       </>
                     ) : (
                       <>

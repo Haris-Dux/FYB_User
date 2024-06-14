@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { addToCart } from "../../features/ActionsSlice";
 import { IoTrashOutline } from "react-icons/io5";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -43,6 +43,12 @@ const StarRating = ({ rating }: { rating: number }) => {
 const SelectedItem: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleReadMore = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   const [reviewId, setReviewId] = useState<string>();
   const [deleteReviewId, setDeleteReviewId] = useState<string>();
@@ -222,14 +228,14 @@ const SelectedItem: React.FC = () => {
                 {/* MAIN DISPLAYER IMAGE */}
                 <img
                   alt="Product"
-                  className="w-full sm:h-[23rem] pr-0 lg:pr-10 object-contain rounded-lg"
+                  className="w-full sm:h-[28rem] pr-0 lg:pr-10 object-contain rounded-lg"
                   src={selectedItem?.image?.downloadURL}
                 />
               </div>
 
               {/* CONTENT SIDE */}
               <div className="content_side">
-                <h2 className="text-3xl font-extrabold text-gray-800">
+                <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800">
                   {selectedItem?.name}
                 </h2>
 
@@ -249,10 +255,18 @@ const SelectedItem: React.FC = () => {
                 {/* ABOUT */}
                 <div className="mt-4">
                   <h3 className="text-lg font-bold text-gray-800">
-                    (Skincare)
+                    ({selectedItem?.category})
                   </h3>
                   <div className="space-y-3 mt-4 pl-0 text-sm text-gray-800">
-                    <p>{selectedItem?.description}</p>
+                    <p className={isExpanded ? "" : "clamped-text"}>
+                      {selectedItem?.description}
+                    </p>
+                    <span
+                      onClick={toggleReadMore}
+                      className="pt-2 text-pink-500 cursor-pointer font-medium hover:underline hover:underline-offset-4"
+                    >
+                      {isExpanded ? "Read less" : "Read more"}
+                    </span>
                   </div>
                 </div>
 
@@ -265,8 +279,8 @@ const SelectedItem: React.FC = () => {
                         className={`${
                           selectedItem?.sale_price &&
                           selectedItem?.sale_price > 0
-                            ? "text-gray-500 text-lg line-through"
-                            : "text-gray-500 text-lg"
+                            ? "text-gray-800 text-lg line-through"
+                            : "text-gray-800 text-xl font-bold"
                         }`}
                       >
                         Rs. {selectedItem?.price}
@@ -309,7 +323,6 @@ const SelectedItem: React.FC = () => {
           <div className="mt-16 max-w-5xl xl:max-w-6xl xxl:max-w-7xl mx-auto">
             <div className="mt-8">
               {/* REVIEWS FORMS */}
-
               <>
                 <div className="mb-8 reviews max-w-5xl xl:max-w-6xl xxl:max-w-7xl mx-auto">
                   <div className="mt-10 all_reviews">
@@ -427,12 +440,25 @@ const SelectedItem: React.FC = () => {
                     ))}
                   </div>
 
-                  <button
-                    className="mt-1 text-white py-2 px-4 rounded-md bg-[#EC72AF] hover:bg-[#f181b9]"
-                    onClick={handleSubmitReview}
-                  >
-                    Submit Review
-                  </button>
+                  {!user ? (
+                    <button
+                      className="mt-1 text-white py-2 px-4 rounded-md bg-[#EC72AF] hover:bg-[#f181b9]"
+                      onClick={handleSubmitReview}
+                    >
+                      Submit Review
+                    </button>
+                  ) : (
+                    <button className="mt-3">
+                      <Link
+                        to="/login?from=products"
+                        onClick={() => window.scroll(0, 0)}
+                        type="button"
+                        className="text-white py-2.5 px-4 rounded-md bg-[#EC72AF] hover:bg-[#f181b9]"
+                      >
+                        Submit Review
+                      </Link>
+                    </button>
+                  )}
                 </div>
               </>
             </div>
@@ -506,7 +532,6 @@ const SelectedItem: React.FC = () => {
       {deleteReview.map((data, index) => (
         <Modal key={index} isOpen={isOpen} onClose={closeModal}>
           <Modal.Body className="space-y-3">
-          
             <Modal.Content>
               <div className="!mb-6">
                 <h3 className="mb-2 text-body-1 font-medium text-metal-900">

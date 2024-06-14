@@ -24,9 +24,12 @@ const Login = () => {
 
   useEffect(() => {
     if (user?.login) {
-      const fromCart =
-        new URLSearchParams(location.search).get("from") === "cart";
+      const fromCart = new URLSearchParams(location.search).get("from") === "cart";
       navigate(fromCart ? "/cart" : "/");
+    }
+    if (user?.login) {
+      const fromCart = new URLSearchParams(location.search).get("from") === "products";
+      navigate(fromCart ? "/products" : "/");
     }
   });
 

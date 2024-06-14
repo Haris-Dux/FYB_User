@@ -68,3 +68,10 @@ input::-webkit-inner-spin-button {
   right: 25px;
   z-index: 1000;
 }
+
+.clamped-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
