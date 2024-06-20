@@ -44,8 +44,7 @@ const Checkout: React.FC = () => {
   const [coupon, setCoupon] = useState("");
 
   const { loading } = useAppSelector((state) => state.orders);
-  const {updateLoading} = useAppSelector((state) => state.auth);
-
+  const { updateLoading } = useAppSelector((state) => state.auth);
 
   const openModal = () => {
     setIsOpen(true);
@@ -120,7 +119,7 @@ const Checkout: React.FC = () => {
           ? totalPrice - couponSuccessData?.discountAmount
           : totalPrice;
 
-        const requestData : any = {
+        const requestData: any = {
           name: user?.user?.name,
           phone,
           address,
@@ -148,7 +147,7 @@ const Checkout: React.FC = () => {
   const categories = cart.map((item: any) => item.category);
 
   const handleVerifyCoupon = () => {
-    const formData : any = {
+    const formData: any = {
       code: coupon,
       userId: userID,
       category: categories,
@@ -188,7 +187,6 @@ const Checkout: React.FC = () => {
                             </h3>
 
                             <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-x-4">
-
                               {/* PHONE NUMBER */}
                               <div className="mt-1 w-full col-span-2">
                                 <input
@@ -217,11 +215,9 @@ const Checkout: React.FC = () => {
 
                           <div className="flex justify-end pt-3">
                             <div className="buttons">
-                              {updateLoading || loading  ? (
-                                <div
-                                  className=" px-4 py-2.5 tracking-wide text-sm font-semibold"
-                                >
-                                   <Loader type="ball-beat" active={true} />
+                              {updateLoading || loading ? (
+                                <div className=" px-4 py-2.5 tracking-wide text-sm font-semibold">
+                                  <Loader type="ball-beat" active={true} />
                                 </div>
                               ) : (
                                 <button
@@ -263,7 +259,9 @@ const Checkout: React.FC = () => {
                                 {product?.name}
                               </p>
                               <p className="mt-1.5 text-sm font-medium text-gray-500">
-                                {product?.category}
+                                {product.category === "Body Care"
+                                  ? "Bodycare"
+                                  : product.category}
                               </p>
                             </div>
                             <p className="mt-3 text-sm font-medium ">

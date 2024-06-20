@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
 
                   <li>
                     <button
-                      onClick={() => handleProducts("Body Care")}
+                      onClick={() => handleProducts("Haircare")}
                       className="text-white transition hover:text-white hover:underline hover:underline-offset-8"
                     >
                       Hair Care
@@ -107,7 +107,7 @@ const Footer: React.FC = () => {
 
                   <li>
                     <button
-                      onClick={() => handleProducts("Haircare")}
+                      onClick={() => handleProducts("Body Care")}
                       className="text-white transition hover:text-white hover:underline hover:underline-offset-8"
                     >
                       Body Care

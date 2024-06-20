@@ -94,10 +94,10 @@ const Header = () => {
       <div className="w-full bg-[#FDEDF5] px-5">
         <div className="max-w-5xl xl:max-w-6xl xxl:max-w-7xl mx-auto flex justify-between items-center flex-wrap flex-col sm:flex-row">
           <div className="banner py-2 text-center hidden sm:block text-[13px] xl:text-[14px] tracking-wide font-normal">
-            ✨ New Arrivals Are Here! Shop Now ✨
+            ✨ New Arrivals Are Here! <Link to="/products" className="font-medium hover:underline hover:underline-offset-2">Shop Now</Link> ✨
           </div>
           <div className="banner py-2 text-center text-[13px] xl:text-[14px] tracking-wide font-normal">
-            ✨ New Arrivals Are Here! Shop Now ✨
+            ✨ New Arrivals Are Here! <Link to="/products" className="font-medium hover:underline hover:underline-offset-2">Shop Now</Link> ✨
           </div>
         </div>
       </div>

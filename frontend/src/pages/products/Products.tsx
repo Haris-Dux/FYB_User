@@ -230,7 +230,11 @@ const Products: React.FC = () => {
                                   </div>
 
                                   <p className="mb-3 text-md text-gray-500">
-                                    ({data.category})
+                                    (
+                                    {data.category === "Body Care"
+                                      ? "Bodycare"
+                                      : data.category}
+                                    )
                                   </p>
 
                                   {data.sale_price > 0 ? (

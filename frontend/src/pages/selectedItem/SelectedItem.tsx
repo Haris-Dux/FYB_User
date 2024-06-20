@@ -255,7 +255,7 @@ const SelectedItem: React.FC = () => {
                 {/* ABOUT */}
                 <div className="mt-4">
                   <h3 className="text-lg font-bold text-gray-800">
-                    ({selectedItem?.category})
+                    ({selectedItem?.category === "Body Care" ? "Bodycare" : selectedItem?.category})
                   </h3>
                   <div className="space-y-3 mt-4 pl-0 text-sm text-gray-800">
                     <p className={isExpanded ? "" : "clamped-text"}>

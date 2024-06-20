@@ -171,7 +171,11 @@ const RelatedProducts = ({ category }: { category: string | undefined }) => {
                           </div>
 
                           <p className="mb-3 text-md text-gray-500">
-                            ({data.category})
+                            (
+                            {data?.category === "Body Care"
+                              ? "Bodycare"
+                              : data?.category}
+                            )
                           </p>
 
                           <p className="mb-3 text-xl font-semibold text-black">
