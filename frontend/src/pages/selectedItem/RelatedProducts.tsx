@@ -145,12 +145,11 @@ const RelatedProducts = ({ category }: { category: string | undefined }) => {
               <Slider ref={sliderRef} {...settings}>
                 {allproducts &&
                   allproducts?.productData?.map((data: any, index: number) => (
-                    <div
-                      key={index}
-                      onClick={() => handleItemClick(String(data.id))}
-                      className="mx-0 pb-7"
-                    >
-                      <div className="group mb-3 relative group w-60 mx-auto bg-white border border-gray-400 hover-border-2 hover:border-[#EC72AF] cursor-pointer">
+                    <div key={index} className="mx-0 pb-7">
+                      <div
+                        onClick={() => handleItemClick(String(data.id))}
+                        className="group mb-3 relative group w-60 mx-auto bg-white border border-gray-400 hover-border-2 hover:border-[#EC72AF] cursor-pointer"
+                      >
                         <img
                           className="object-cover w-full h-56"
                           src={data.image.downloadURL}

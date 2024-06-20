@@ -79,9 +79,9 @@ const MyOrders = () => {
         closeModal();
       }
       window.scroll({
-        behavior:"smooth",
-        top:0
-      })
+        behavior: "smooth",
+        top: 0,
+      });
     });
   };
 
@@ -114,131 +114,141 @@ const MyOrders = () => {
       ) : (
         <section className="w-full  py-14 sm:py-12 px-5 sm:px-8 lg:px-10 xl:px-0 min-h-[90vh]">
           <div className="max-w-5xl xl:max-w-6xl mx-auto">
-            <h2 className="playfair text-3xl font-bold">Order Details</h2>
-            <div className="mt-3 text-sm">
-              Check the status of recent and old orders
-            </div>
-            {allOrder.map((data: any) => (
-              <div
-                key={data?.OrderID}
-                className="mt-8 flex flex-col overflow-hidden rounded-xl border border-[#EB72AF] md:flex-row"
-              >
-                {/* ORDER DETAILS */}
-                <div className="w-full border-r border-gray-300 bg-[#FFF3F9] md:max-w-xs">
-                  <div className="parent py-6 px-6 flex flex-col justify-between h-full gap-y-10">
-                    {/* ORDER DETAILS */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-2">
-                      <div className="mb-4">
-                        <div className="text-md sm:text-md font-semibold">
-                          Order ID
-                        </div>
-                        <div className="text-md font-medium text-gray-700">
-                          {data?.OrderID}
-                        </div>
-                      </div>
-                      <div className="mb-4">
-                        <div className="text-md sm:text-md font-semibold">
-                          Date
-                        </div>
-                        <div className="text-md font-medium text-gray-700">
-                          {new Date(data?.createdAt).toLocaleDateString()}
-                        </div>
-                      </div>
-                      <div className="mb-4">
-                        <div className="text-md sm:text-md font-semibold">
-                          Total Amount
-                        </div>
-                        <div className="text-md font-medium text-gray-700">
-                          Rs. {data?.totalAmount}
-                        </div>
-                      </div>
-                      <div className="mb-4">
-                        <div className="text-md sm:text-md font-semibold">
-                          Order Status
-                        </div>
-                        <div
-                          className={`text-md font-medium ${getStatusColor(
-                            data?.orderProgress
-                          )}`}
-                        >
-                          {data?.orderProgress}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* ORDER CANCEL BUTTON */}
-                    <div className="button">
-                      {data?.orderProgress &&
-                        data?.orderProgress === "Pending" && (
-                          <div>
-                            <button
-                              onClick={() => openModal(data?.id)}
-                              className="mt-5 flex items-center gap-2 bg-[#EB72AF] text-white px-4 py-2 rounded-lg"
-                            >
-                              <span>Cancel Order</span>
-                            </button>
-                          </div>
-                        )}
-                    </div>
-                  </div>
+            {allOrder?.length === 0 ? (
+              <>
+                <span className="playfair text-3xl font-semibold uppercase">
+                  No Orders
+                </span>
+              </>
+            ) : (
+              <>
+                <h2 className="playfair text-3xl font-bold">Order Details</h2>
+                <div className="mt-3 text-sm">
+                  Check the status of recent and old orders
                 </div>
+                {allOrder.map((data: any) => (
+                  <div
+                    key={data?.OrderID}
+                    className="mt-8 flex flex-col overflow-hidden rounded-xl border border-[#EB72AF] md:flex-row"
+                  >
+                    {/* ORDER DETAILS */}
+                    <div className="w-full border-r border-gray-300 bg-[#FFF3F9] md:max-w-xs">
+                      <div className="parent py-6 px-6 flex flex-col justify-between h-full gap-y-10">
+                        {/* ORDER DETAILS */}
+                        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-2">
+                          <div className="mb-4">
+                            <div className="text-md sm:text-md font-semibold">
+                              Order ID
+                            </div>
+                            <div className="text-md font-medium text-gray-700">
+                              {data?.OrderID}
+                            </div>
+                          </div>
+                          <div className="mb-4">
+                            <div className="text-md sm:text-md font-semibold">
+                              Date
+                            </div>
+                            <div className="text-md font-medium text-gray-700">
+                              {new Date(data?.createdAt).toLocaleDateString()}
+                            </div>
+                          </div>
+                          <div className="mb-4">
+                            <div className="text-md sm:text-md font-semibold">
+                              Total Amount
+                            </div>
+                            <div className="text-md font-medium text-gray-700">
+                              Rs. {data?.totalAmount}
+                            </div>
+                          </div>
+                          <div className="mb-4">
+                            <div className="text-md sm:text-md font-semibold">
+                              Order Status
+                            </div>
+                            <div
+                              className={`text-md font-medium ${getStatusColor(
+                                data?.orderProgress
+                              )}`}
+                            >
+                              {data?.orderProgress}
+                            </div>
+                          </div>
+                        </div>
 
-                {/* ORDER ITEMS */}
-                <div className="flex-1 bg-white">
-                  <div className="py-6 px-3 sm:px-6">
-                    <ul className="gap-4 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
-                      {data &&
-                        data?.items?.map((product: Product) => (
-                          <li
-                            key={product?.id}
-                            className="flex px-3 flex-col justify-between space-x-5 py-7 md:flex-row border rounded-xl bg-[#FFF3F9]"
-                          >
-                            <div className="flex flex-1 items-stretch">
-                              <div className="flex-shrink-0">
-                                <img
-                                  className="h-20 w-20 rounded-lg bg-white border border-gray-200 object-contain"
-                                  src={product?.image.downloadURL}
-                                  alt="order_img"
-                                />
+                        {/* ORDER CANCEL BUTTON */}
+                        <div className="button">
+                          {data?.orderProgress &&
+                            data?.orderProgress === "Pending" && (
+                              <div>
+                                <button
+                                  onClick={() => openModal(data?.id)}
+                                  className="mt-5 flex items-center gap-2 bg-[#EB72AF] text-white px-4 py-2 rounded-lg"
+                                >
+                                  <span>Cancel Order</span>
+                                </button>
                               </div>
+                            )}
+                        </div>
+                      </div>
+                    </div>
 
-                              <div className="ml-5 flex flex-col justify-between">
-                                <div className="flex-1">
-                                  <p className="text-sm font-bold text-gray-900">
-                                    {product?.name}
-                                  </p>
-                                  <p className="mt-1.5 text-sm font-medium text-gray-500">
-                                    {product?.category}
-                                  </p>
+                    {/* ORDER ITEMS */}
+                    <div className="flex-1 bg-white">
+                      <div className="py-6 px-3 sm:px-6">
+                        <ul className="gap-4 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
+                          {data &&
+                            data?.items?.map((product: Product) => (
+                              <li
+                                key={product?.id}
+                                className="flex px-3 flex-col justify-between space-x-5 py-7 md:flex-row border rounded-xl bg-[#FFF3F9]"
+                              >
+                                <div className="flex flex-1 items-stretch">
+                                  <div className="flex-shrink-0">
+                                    <img
+                                      className="h-20 w-20 rounded-lg bg-white border border-gray-200 object-contain"
+                                      src={product?.image.downloadURL}
+                                      alt="order_img"
+                                    />
+                                  </div>
+
+                                  <div className="ml-5 flex flex-col justify-between">
+                                    <div className="flex-1">
+                                      <p className="text-sm font-bold text-gray-900">
+                                        {product?.name}
+                                      </p>
+                                      <p className="mt-1.5 text-sm font-medium text-gray-500">
+                                        {product?.category}
+                                      </p>
+                                    </div>
+
+                                    <p className="mt-4 text-sm font-medium text-gray-500">
+                                      x {product?.quantity}
+                                    </p>
+                                  </div>
                                 </div>
 
-                                <p className="mt-4 text-sm font-medium text-gray-500">
-                                  x {product?.quantity}
-                                </p>
-                              </div>
-                            </div>
-
-                            <div className="ml-auto flex flex-col items-end justify-between">
-                              <p className="text-right text-sm font-bold text-gray-900">
-                                {product?.sale_price !== 0 ||
-                                product?.sale_price > 0 ? (
-                                  <>
-                                    <p className="">
-                                      Rs. {product?.sale_price}
-                                    </p>
-                                  </>
-                                ) : (
-                                  <p className="">Rs. {product?.price}</p>
-                                )}
-                              </p>
-                            </div>
-                          </li>
-                        ))}
-                    </ul>
+                                <div className="ml-auto flex flex-col items-end justify-between">
+                                  <p className="text-right text-sm font-bold text-gray-900">
+                                    {product?.sale_price !== 0 ||
+                                    product?.sale_price > 0 ? (
+                                      <>
+                                        <p className="">
+                                          Rs. {product?.sale_price}
+                                        </p>
+                                      </>
+                                    ) : (
+                                      <p className="">Rs. {product?.price}</p>
+                                    )}
+                                  </p>
+                                </div>
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                ))}
+              </>
+            )}
           </div>
         </section>
       )}
@@ -255,9 +265,9 @@ const MyOrders = () => {
           </Modal.Content>
           <Modal.Footer>
             {updateLoading ? (
-             <div className="flex justify-center items-center w-full">
-             <Loader type="ball-beat" active={true} />
-             </div>
+              <div className="flex justify-center items-center w-full">
+                <Loader type="ball-beat" active={true} />
+              </div>
             ) : (
               <>
                 {" "}
