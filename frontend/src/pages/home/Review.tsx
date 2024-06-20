@@ -72,7 +72,7 @@ const Review = () => {
                   <div className="img w-10">
                     <img
                       className="rounded-full w-full"
-                      src="https://cdn.shopify.com/s/files/1/0852/5099/8550/files/Ellipse_347.png?v=1714519512"
+                      src="https://cdn.shopify.com/s/files/1/0649/1399/8024/files/user.png?v=1718392709"
                       alt=""
                     />
                   </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { addToCart } from "../../features/ActionsSlice";
 import { IoTrashOutline } from "react-icons/io5";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -440,25 +440,13 @@ const SelectedItem: React.FC = () => {
                     ))}
                   </div>
 
-                  {!user ? (
                     <button
                       className="mt-1 text-white py-2 px-4 rounded-md bg-[#EC72AF] hover:bg-[#f181b9]"
                       onClick={handleSubmitReview}
                     >
                       Submit Review
                     </button>
-                  ) : (
-                    <button className="mt-3">
-                      <Link
-                        to="/login?from=products"
-                        onClick={() => window.scroll(0, 0)}
-                        type="button"
-                        className="text-white py-2.5 px-4 rounded-md bg-[#EC72AF] hover:bg-[#f181b9]"
-                      >
-                        Submit Review
-                      </Link>
-                    </button>
-                  )}
+                 
                 </div>
               </>
             </div>
