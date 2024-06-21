@@ -74,8 +74,10 @@ const Cart: React.FC = () => {
                           </h3>
                           <h6 className="text-md text-gray-500 mt-2">
                             Category:{" "}
-                            <strong className="ml-2">
-                              {product?.category}
+                            <strong className="">
+                              {product.category === "Body Care"
+                                ? "Bodycare"
+                                : product.category}
                             </strong>
                           </h6>
                           <h6 className="text-md text-gray-500 mt-2 flex items-center">

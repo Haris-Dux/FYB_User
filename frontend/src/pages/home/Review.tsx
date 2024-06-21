@@ -4,38 +4,45 @@ import Marquee from "react-fast-marquee";
 const data = [
   {
     review:
-      "My biggest pet peeves have been dry skin. But when I stumbled across their hydrating moisturizer, it's been my saving grace since. It's absorbent, doesn't feel too tacky on the skin which I love, and has replenished my skin. I've received so many compliments since I started using it!",
+      "I recently tried the shampoo and conditioner from For Your Beauty, and my hair has never felt better! The products are gentle yet effective, leaving my hair smooth and shiny. I love the natural ingredients and the pleasant fragrance. Highly recommend!",
     name: "Maryam",
     url: "https://cdn.shopify.com/s/files/1/0852/5099/8550/files/Vector.png?v=1714518760",
     rating: 5,
   },
   {
     review:
-      "I've been on a hunt for a long-lasting full coverage foundation since I work long hour shifts. Since I bought ForYourBeauty’s recommended foundation, it's done wonders. I was blown away by the coverage and longevity of this foundation. The skin color match is perfect too!",
+      "For Your Beauty's serum is a game-changer for my skincare routine. It absorbs quickly and makes my skin feel so soft and hydrated. I've noticed a real difference in the appearance of fine lines. Plus, it's not greasy at all. Will definitely buy again!",
     name: "Eshaal",
     url: "https://cdn.shopify.com/s/files/1/0852/5099/8550/files/Vector.png?v=1714518760",
     rating: 4,
   },
   {
     review:
-      "I've gone through a ton of bottles of this hair care duo, and it never ceases to amaze me. What I love about it as a vegan, is that its formula is cruelty-free and has recyclable packaging. I wish it came in a larger size though.",
+      "I have sensitive skin, so I was nervous about trying a new body wash. But the one from For Your Beauty is amazing! It's so gentle and doesn't irritate my skin at all. My skin feels clean and moisturized after every shower. Absolutely love it!",
     name: "Alina Ijaz",
     url: "https://cdn.shopify.com/s/files/1/0852/5099/8550/files/Vector.png?v=1714518760",
     rating: 4,
   },
   {
     review:
-      "This creamy eyeshadow palette is a must-have cosmetic for runways and shows. As an MUA, this is my favorite palette to use on my clients and models since it's incredibly pigmented, blendable and stays on all day. I highly suggest it if you're big on eyeshadows.",
+      "The toner from For Your Beauty is a must-have. It refreshes my skin and helps reduce redness. I use it every morning and night, and my skin looks clearer and brighter. It's a great addition to my skincare routine.",
     name: "Hoorain Kashif",
     url: "https://cdn.shopify.com/s/files/1/0852/5099/8550/files/Vector.png?v=1714518760",
     rating: 5,
   },
   {
     review:
-      "I've never been into skin exfoliation until I was recommended this face scrub. My skin has never looked this refreshed before. I wished it was fragrance-free because I'm not too big on scented skincare. Otherwise, it's one of my favorite skin care items I own.",
+      "I struggle with acne, so I decided to try the acne dot cleaner from For Your Beauty. It's incredible! The dots work overnight to reduce pimples and redness. They are easy to use and really effective. I'm so happy with the results!",
     name: "Memona Aslam",
     url: "https://cdn.shopify.com/s/files/1/0852/5099/8550/files/Vector.png?v=1714518760",
     rating: 5,
+  },
+  {
+    review:
+      "I recently bought the scalp scrub from For Your Beauty, and it has transformed my scalp health. It removes buildup and leaves my scalp feeling fresh and clean. My hair also seems to be growing faster and looks healthier. Amazing product!",
+    name: "Rubab Alam",
+    url: "https://cdn.shopify.com/s/files/1/0852/5099/8550/files/Vector.png?v=1714518760",
+    rating: 4,
   },
 ];
 
