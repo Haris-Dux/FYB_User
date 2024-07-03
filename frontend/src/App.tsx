@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { Suspense, useState } from "react";
-import TagManager from "react-gtm-module";
 import "./App.css";
 import { Toaster } from "react-hot-toast";
 const HomePage = React.lazy(() => import("./pages/home/HomePage"));
@@ -36,11 +35,7 @@ import "./Loader.scss";
 function App() {
   const [showButton, setShowButton] = useState(false);
 
-  const tagManagerArgs = {
-    gtmId: "GTM-PRS8WFMT",
-  };
-
-  TagManager.initialize(tagManagerArgs);
+  
 
   useEffect(() => {
     const handleScroll = () => {
