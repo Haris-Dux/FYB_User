@@ -2,6 +2,7 @@ import "./About.css";
 import AboutSection from "../home/AboutSection";
 import Review from "../home/Review";
 import { Helmet } from "react-helmet";
+import BoxReveal from "../../components/magicui/box-reveal";
 
 const About: React.FC = () => {
   return (
@@ -32,26 +33,34 @@ const About: React.FC = () => {
           </div>
 
           <div className="lg:flex-grow md:w-1/2 px-4 sm:px-0 xl:pl-16 lg:pl-20 md:pl-16 flex flex-col text-left">
-            <h1 className="playfair mb-5 font-bold max-w-md text-3xl md:text-5xl text-[#272727]">
-              Our Story
-            </h1>
-            <p className="mb-6 leading-relaxed">
-              Welcome to For Your Beauty, where we believe that true beauty
-              begins with self-care and self-love. Our journey started with a
-              simple yet profound realization: everyone deserves to feel
-              confident and radiant in their own skin. Driven by this passion,
-              we embarked on a mission to create skincare products that are not
-              only effective but also kind to your skin and the environment.
-            </p>
-            <p className="mb-6 leading-relaxed">
-              Our story is one of dedication and innovation. From humble
-              beginnings, we have grown into a brand that values quality,
-              sustainability, and authenticity. Each product is meticulously
-              crafted using natural ingredients, ensuring that your skincare
-              routine is both luxurious and nourishing. We are committed to
-              transparency, and we strive to provide you with products that you
-              can trust and love.
-            </p>
+            <BoxReveal boxColor={"#EC72AF"} duration={0.5}>
+              <h1 className="playfair mb-5 font-bold max-w-md text-3xl md:text-5xl text-[#272727]">
+                Our Story
+              </h1>
+            </BoxReveal>
+
+            <BoxReveal boxColor={"#EC72AF"} duration={0.5}>
+              <p className="mb-6 leading-relaxed">
+                Welcome to For Your Beauty, where we believe that true beauty
+                begins with self-care and self-love. Our journey started with a
+                simple yet profound realization: everyone deserves to feel
+                confident and radiant in their own skin. Driven by this passion,
+                we embarked on a mission to create skincare products that are
+                not only effective but also kind to your skin and the
+                environment.
+              </p>
+            </BoxReveal>
+            <BoxReveal boxColor={"#EC72AF"} duration={0.5}>
+              <p className="mb-6 leading-relaxed">
+                Our story is one of dedication and innovation. From humble
+                beginnings, we have grown into a brand that values quality,
+                sustainability, and authenticity. Each product is meticulously
+                crafted using natural ingredients, ensuring that your skincare
+                routine is both luxurious and nourishing. We are committed to
+                transparency, and we strive to provide you with products that
+                you can trust and love.
+              </p>
+            </BoxReveal>
           </div>
         </div>
       </section>

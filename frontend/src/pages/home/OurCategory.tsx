@@ -1,5 +1,6 @@
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import WordPullUp from "../../components/magicui/word-pull-up";
 
 const OurCategory: React.FC = () => {
   const navigate = useNavigate();
@@ -13,9 +14,11 @@ const OurCategory: React.FC = () => {
     <>
       <section className="py-14 sm:py-16 px-4 sm:px-4 xl:px-0">
         <div className="max-w-5xl xl:max-w-6xl xxl:max-w-7xl mx-auto">
-          <h2 className="mb-2.5 playfair text-center text-4xl font-bold">
-            Our Category
-          </h2>
+          {/* <h2 className="mb-2.5 playfair text-center text-4xl font-bold"></h2> */}
+          <WordPullUp
+            className="mb-2.5 playfair text-center text-4xl font-bold"
+            words="Our Category"
+          />
           <p className=" mx-auto h-0.5 w-16 bg-[#EC72AF]"></p>
 
           {/* CONTENT */}

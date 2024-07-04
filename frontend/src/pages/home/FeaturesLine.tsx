@@ -2,22 +2,19 @@ import Marquee from "react-fast-marquee";
 
 const data = [
   {
-    review: "Nourish Your Skin Naturally",
+    review: "Transform Your Skin with Pure Bliss",
   },
   {
-    review: "We love Organic Products",
+    review: "Love Your Skin Like Never Before",
   },
   {
-    review: "Glow with Organic Goodness",
+    review: "Embrace the Glow of Health",
   },
   {
-    review: "Nourish Your Skin Naturally",
+    review: "Unlock Your Skin’s True Potential",
   },
   {
-    review: "We love Organic Products",
-  },
-  {
-    review: "Glow with Organic Goodness",
+    review: "Radiate Confidence Every Day",
   },
 ];
 

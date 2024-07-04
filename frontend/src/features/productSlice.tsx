@@ -2,10 +2,10 @@ import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // API URLs
-const getAllProductUrl = `/api/products/getProducts`;
-const getProductById = `/api/products/getProductById`;
+const getAllProductUrl = `https://foryourbeauty.shop/api/products/getProducts`;
+const getProductById = `https://foryourbeauty.shop/api/products/getProductById`;
 const getLatestProductUrl =
-  "/api/products/getLatestPRoducts";
+  "https://foryourbeauty.shop/api/products/getLatestPRoducts";
 
 // GET ALL PRODUCT ASYNC THUNK
 export const getAllProductsAsync = createAsyncThunk(
@@ -78,6 +78,7 @@ interface Product {
 interface ProductState {
   loading: boolean;
   Productloading: boolean;
+  singleProductloading: boolean;
   products: Product[] | any;
   latestProducts: Product[];
   singleProduct: Product | null;
@@ -86,6 +87,7 @@ interface ProductState {
 const initialState: ProductState = {
   loading: false,
   Productloading: false,
+  singleProductloading: false,
   products: [],
   latestProducts: [],
   singleProduct: null,
@@ -109,11 +111,14 @@ const productSlice = createSlice({
 
       // GET SINGLE PRODUCTS
       .addCase(getProductByIdAsync.pending, (state) => {
-        state.loading = true;
+        state.singleProductloading = true;
       })
       .addCase(getProductByIdAsync.fulfilled, (state, action) => {
-        state.loading = false;
+        state.singleProductloading = false;
         state.singleProduct = action.payload;
+      })
+      .addCase(getProductByIdAsync.rejected, (state) => {
+        state.singleProductloading = false;
       })
 
       // GET ALL LATEST PRODUCTS ADD CASE
