@@ -53,6 +53,15 @@ const AboutSection: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <section className="py-10 px-0.5">
+        <div className="relative max-w-5xl xl:max-w-6xl xxl:max-w-7xl mx-auto">
+          <div
+            className="elfsight-app-f920ae83-1891-47ed-a7a3-08a5d99ad9ca"
+            data-elfsight-app-lazy
+          ></div>
+        </div>
+      </section>
     </>
   );
 };
