@@ -2,10 +2,10 @@ import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // API URLs
-const getAllProductUrl = `https://foryourbeauty.shop/api/products/getProducts`;
-const getProductById = `https://foryourbeauty.shop/api/products/getProductById`;
+const getAllProductUrl = `/api/products/getProducts`;
+const getProductById = `/api/products/getProductById`;
 const getLatestProductUrl =
-  "https://foryourbeauty.shop/api/products/getLatestPRoducts";
+  "/api/products/getLatestPRoducts";
 
 // GET ALL PRODUCT ASYNC THUNK
 export const getAllProductsAsync = createAsyncThunk(
