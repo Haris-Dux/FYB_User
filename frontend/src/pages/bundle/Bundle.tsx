@@ -99,7 +99,7 @@ const Bundle: React.FC = () => {
                               <img
                                 className="object-contain sm:object-cover w-full min-h-56 rounded-2xl border-none sm:border-2 hover:border-[#EC72AF] transition-colors"
                                 src={data?.image.downloadURL}
-                                alt="products"
+                                alt="bundle"
                               />
 
                               <div className="-mt-5 sm:mt-0 py-0 sm:py-3 px-3 text-center flex justify-between flex-col sm:flex-row items-center">

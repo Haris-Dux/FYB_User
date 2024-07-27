@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { FaStar } from "react-icons/fa";
 import { Button, Modal } from "keep-react";
 import { FiEdit } from "react-icons/fi";
+import { MdOutlineStarBorder } from "react-icons/md";
 import toast from "react-hot-toast";
 import {
   createreviewsAsync,
@@ -14,7 +15,10 @@ import {
   updatereviewsAsync,
 } from "../../features/reviewsSlice";
 import RelatedProducts from "./RelatedProducts";
-import { getProductByIdAsync } from "../../features/productSlice";
+import {
+  getProductByIdAsync,
+  ProductDetails,
+} from "../../features/productSlice";
 import Loader from "react-loaders";
 import "loaders.css/loaders.min.css";
 import "../../Loader.scss";
@@ -238,7 +242,11 @@ const SelectedItem: React.FC = () => {
                     <img
                       className="w-full sm:h-[28rem] pr-0 lg:pr-10 object-contain rounded-lg"
                       src={selectedItem?.image?.downloadURL}
-                      alt="Product"
+                      alt={
+                        selectedItem?.category !== "Bundle"
+                          ? "Product"
+                          : "Bundle"
+                      }
                     />
                   </div>
 
@@ -371,9 +379,9 @@ const SelectedItem: React.FC = () => {
                             What's Inside{" "}
                             {selectedItem?.bundleDescription?.main_heading}
                           </h2>
-                          
+
                           {selectedItem?.bundleDescription?.product_details.map(
-                            (product: string, index: number) => (
+                            (product: ProductDetails, index: number) => (
                               <>
                                 <div className="mb-3" key={index}>
                                   <h3 className="text-xl font-semibold">
@@ -382,15 +390,25 @@ const SelectedItem: React.FC = () => {
                                   <p className="text-lg font-normal">
                                     {product?.description}
                                   </p>
-                                  <ul className="mb-2 text-lg font-normal pl-5">
+                                  <ul className="mb-2 text-lg font-normal pl-2">
                                     {product?.key_benefits?.map(
                                       (benefits: string, index: number) => (
-                                        <li key={index} className="list-disc">
-                                          {benefits}
-                                        </li>
+                                        <>
+                                          <li
+                                            key={index}
+                                            className="flex justify-start items-center gap-x-2"
+                                          >
+                                            <MdOutlineStarBorder
+                                              size={20}
+                                              className="text-[#EC72AF]"
+                                            />
+                                            {benefits}
+                                          </li>
+                                        </>
                                       )
                                     )}
                                   </ul>
+
                                   <h2 className="text-lg font-medium">
                                     <span className="font-semibold mr-2">
                                       key Ingrediants:
