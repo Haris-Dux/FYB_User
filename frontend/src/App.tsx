@@ -31,11 +31,11 @@ import Loader2 from "./components/Loader";
 import { FaArrowUp } from "react-icons/fa6";
 import "loaders.css/loaders.min.css";
 import "./Loader.scss";
+import Bundle from "./pages/bundle/Bundle";
+import FacebookPixel from "./hooks/FacebookPixel";
 
 function App() {
   const [showButton, setShowButton] = useState(false);
-
-  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,6 +71,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
+        <FacebookPixel />
         <Routes>
           <Route path="*" element={<NotFound />} />
           <Route
@@ -88,6 +89,14 @@ function App() {
             element={
               <Suspense fallback={<Loader2 />}>
                 <Products />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/bundle"
+            element={
+              <Suspense fallback={<Loader2 />}>
+                <Bundle />
               </Suspense>
             }
           />
