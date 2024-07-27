@@ -32,6 +32,7 @@ import { FaArrowUp } from "react-icons/fa6";
 import "loaders.css/loaders.min.css";
 import "./Loader.scss";
 import Bundle from "./pages/bundle/Bundle";
+import FacebookPixel from "./hooks/FacebookPixel";
 
 function App() {
   const [showButton, setShowButton] = useState(false);
@@ -70,6 +71,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
+        <FacebookPixel />
         <Routes>
           <Route path="*" element={<NotFound />} />
           <Route

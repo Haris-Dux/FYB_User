@@ -68,9 +68,23 @@ interface Product {
   image: Image;
   averageRating: number;
   description: string;
+  bundleDescription: BundleDetails;
   sale_price: number | undefined;
   price: number;
   stock: number;
+}
+
+interface BundleDetails {
+  main_description: string;
+  main_heading: string;
+  product_details: ProductDetails;
+  why_choose_us: any;
+}
+
+interface ProductDetails {
+  name: string;
+  description: string;
+  key_benefits: [];
 }
 
 // INITIAL STATE

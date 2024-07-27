@@ -62,7 +62,7 @@ const SelectedItem: React.FC = () => {
   }, [id]);
 
   const allproducts = useAppSelector((state) => state.products.singleProduct);
-
+  console.log("allproducts", allproducts);
   const singleProductloading = useAppSelector(
     (state) => state.products.singleProductloading
   );
@@ -225,7 +225,7 @@ const SelectedItem: React.FC = () => {
         <Loader2 />
       ) : (
         <>
-          <div className="pt-4">
+          <div className="pt-4 pb-10">
             <div className="px-4 max-w-5xl xl:max-w-6xl xxl:max-w-7xl mx-auto">
               <div>
                 <p className="mt-5 mb-4 sm:ml-7">
@@ -236,83 +236,188 @@ const SelectedItem: React.FC = () => {
                   <div className="w-full overflow-hidden lg:sticky top-0 sm:flex gap-2">
                     {/* MAIN DISPLAYER IMAGE */}
                     <img
-                      alt="Product"
                       className="w-full sm:h-[28rem] pr-0 lg:pr-10 object-contain rounded-lg"
                       src={selectedItem?.image?.downloadURL}
+                      alt="Product"
                     />
                   </div>
 
                   {/* CONTENT SIDE */}
                   <div className="content_side">
-                    <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800">
-                      {selectedItem?.name}
-                    </h2>
+                    {selectedItem?.category !== "Bundle" ? (
+                      <>
+                        <div className="content">
+                          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800">
+                            {selectedItem?.name}
+                          </h2>
 
-                    {selectedItem && (
-                      <div className="flex items-center mt-4">
-                        {selectedItem.averageRating === 0 ? (
-                          "No Ratings"
-                        ) : (
-                          <StarRating rating={selectedItem.averageRating} />
-                        )}
-                        <span className="ml-2 text-sm text-gray-500">
-                          ({selectedItem.averageRating})
-                        </span>
-                      </div>
-                    )}
-
-                    {/* ABOUT */}
-                    <div className="mt-4">
-                      <h3 className="text-lg font-bold text-gray-800">
-                        (
-                        {selectedItem?.category === "Body Care"
-                          ? "Bodycare"
-                          : selectedItem?.category}
-                        )
-                      </h3>
-                      <div className="space-y-3 mt-4 pl-0 text-sm text-gray-800">
-                        <p className={isExpanded ? "" : "clamped-text"}>
-                          {selectedItem?.description}
-                        </p>
-                        <span
-                          onClick={toggleReadMore}
-                          className="pt-2 text-pink-500 cursor-pointer font-medium hover:underline hover:underline-offset-4"
-                        >
-                          {isExpanded ? "Read less" : "Read more"}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* PRICE SECTION */}
-                    <div className="flex flex-wrap items-center gap-4 mt-4">
-                      {selectedItem &&
-                      selectedItem.price !== selectedItem?.sale_price ? (
-                        <>
-                          <p
-                            className={`${
-                              selectedItem?.sale_price &&
-                              selectedItem?.sale_price > 0
-                                ? "text-gray-800 text-lg line-through"
-                                : "text-gray-800 text-xl font-bold"
-                            }`}
-                          >
-                            Rs. {selectedItem?.price}
-                          </p>
-                          {selectedItem?.sale_price &&
-                          selectedItem?.sale_price > 0 ? (
-                            <p className="text-gray-800 text-2xl font-bold">
-                              Rs. {selectedItem?.sale_price}
-                            </p>
-                          ) : (
-                            ""
+                          {/* Rating */}
+                          {selectedItem && (
+                            <div className="flex items-center mt-4">
+                              {selectedItem.averageRating === 0 ? (
+                                "No Ratings"
+                              ) : (
+                                <StarRating
+                                  rating={selectedItem.averageRating}
+                                />
+                              )}
+                              <span className="ml-2 text-sm text-gray-500">
+                                ({selectedItem.averageRating})
+                              </span>
+                            </div>
                           )}
-                        </>
-                      ) : (
-                        <p className="text-gray-800 text-2xl font-bold">
-                          Rs. {selectedItem?.price}
-                        </p>
-                      )}
-                    </div>
+
+                          {/* ABOUT */}
+                          <div className="mt-4">
+                            <h3 className="text-lg font-bold text-gray-800">
+                              (
+                              {selectedItem?.category === "Body Care"
+                                ? "Bodycare"
+                                : selectedItem?.category}
+                              )
+                            </h3>
+
+                            {/* DESCRIPTION */}
+
+                            <div className="space-y-3 mt-4 pl-0 text-sm text-gray-800">
+                              <p className={isExpanded ? "" : "clamped-text"}>
+                                {selectedItem?.description}
+                              </p>
+                              <span
+                                onClick={toggleReadMore}
+                                className="pt-2 text-pink-500 cursor-pointer font-medium hover:underline hover:underline-offset-4"
+                              >
+                                {isExpanded ? "Read less" : "Read more"}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* PRICE SECTION */}
+                          <div className="flex flex-wrap items-center gap-4 mt-4">
+                            {selectedItem &&
+                            selectedItem.price !== selectedItem?.sale_price ? (
+                              <>
+                                <p
+                                  className={`${
+                                    selectedItem?.sale_price &&
+                                    selectedItem?.sale_price > 0
+                                      ? "text-gray-800 text-lg line-through"
+                                      : "text-gray-800 text-xl font-bold"
+                                  }`}
+                                >
+                                  Rs. {selectedItem?.price}
+                                </p>
+                                {selectedItem?.sale_price &&
+                                selectedItem?.sale_price > 0 ? (
+                                  <p className="text-gray-800 text-2xl font-bold">
+                                    Rs. {selectedItem?.sale_price}
+                                  </p>
+                                ) : (
+                                  ""
+                                )}
+                              </>
+                            ) : (
+                              <p className="text-gray-800 text-2xl font-bold">
+                                Rs. {selectedItem?.price}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        {/* IF BUNDLE --> THEN THIS BLOCK SHOW */}
+                        <div className="mt-4 pl-0 text-sm text-gray-800">
+                          <h2 className="mb-1 text-2xl sm:text-3xl font-semibold text-gray-800">
+                            {selectedItem?.bundleDescription?.main_heading}
+                          </h2>
+                          <p className="mb-2 text-lg font-normal">
+                            {selectedItem?.bundleDescription?.main_description}
+                          </p>
+
+                          {/* PRICE SECTION */}
+                          <div className="flex flex-wrap items-center gap-4 my-2.5">
+                            {selectedItem &&
+                            selectedItem.price !== selectedItem?.sale_price ? (
+                              <>
+                                <p
+                                  className={`${
+                                    selectedItem?.sale_price &&
+                                    selectedItem?.sale_price > 0
+                                      ? "text-gray-800 text-lg line-through"
+                                      : "text-gray-800 text-xl font-bold"
+                                  }`}
+                                >
+                                  Rs. {selectedItem?.price}
+                                </p>
+                                {selectedItem?.sale_price &&
+                                selectedItem?.sale_price > 0 ? (
+                                  <p className="text-red-600 text-2xl font-bold">
+                                    Rs. {selectedItem?.sale_price}
+                                  </p>
+                                ) : (
+                                  ""
+                                )}
+                              </>
+                            ) : (
+                              <p className="text-gray-800 text-2xl font-bold">
+                                Rs. {selectedItem?.price}
+                              </p>
+                            )}
+                          </div>
+
+                          {/* WHAT'S INSIDE */}
+                          <h2 className="mb-1.5 text-2xl font-semibold">
+                            What's Inside{" "}
+                            {selectedItem?.bundleDescription?.main_heading}
+                          </h2>
+                          
+                          {selectedItem?.bundleDescription?.product_details.map(
+                            (product: string, index: number) => (
+                              <>
+                                <div className="mb-3" key={index}>
+                                  <h3 className="text-xl font-semibold">
+                                    {index + 1} - {product?.name}
+                                  </h3>
+                                  <p className="text-lg font-normal">
+                                    {product?.description}
+                                  </p>
+                                  <ul className="mb-2 text-lg font-normal pl-5">
+                                    {product?.key_benefits?.map(
+                                      (benefits: string, index: number) => (
+                                        <li key={index} className="list-disc">
+                                          {benefits}
+                                        </li>
+                                      )
+                                    )}
+                                  </ul>
+                                  <h2 className="text-lg font-medium">
+                                    <span className="font-semibold mr-2">
+                                      key Ingrediants:
+                                    </span>
+                                    <span className="text-lg font-normal">
+                                      {product?.key_ingrediants}
+                                    </span>
+                                  </h2>
+                                </div>
+                              </>
+                            )
+                          )}
+
+                          {/* WHY CHOOSE US */}
+                          <h2 className="text-lg font-semibold">Why Choose?</h2>
+                          <ul>
+                            {selectedItem?.bundleDescription?.why_choose_us.map(
+                              (reason: string, index: number) => (
+                                <li className="text-lg font-normal" key={index}>
+                                  {reason}
+                                </li>
+                              )
+                            )}
+                          </ul>
+                        </div>
+                      </>
+                    )}
 
                     {/* CART BUTTON */}
                     {selectedItem?.stock && selectedItem?.stock > 0 ? (
@@ -466,7 +571,10 @@ const SelectedItem: React.FC = () => {
             </div>
           </div>
 
-          <RelatedProducts category={category} />
+          {/* RELATED PRODUCTS */}
+          {selectedItem?.category !== "Bundle" ? (
+            <RelatedProducts category={category} />
+          ) : null}
 
           {selectedReview.map((data, index) => (
             <Modal key={index} isOpen={isOpenUpdate} onClose={closeUpdateModal}>
