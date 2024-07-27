@@ -66,7 +66,7 @@ const Bundle: React.FC = () => {
       </Helmet>
 
       {/* BANNER IMAGE */}
-      <section className="product_banner">
+      <section className="bundle_banner">
         <div className="py-12 sm:py-28 about_cont px-2.5 flex justify-center items-center flex-col">
           <h2 className="playfair mb-2 text-black text-2xl sm:text-4xl font-bold text-center max-w-xl">
             Bundle
@@ -78,7 +78,7 @@ const Bundle: React.FC = () => {
       </section>
 
       <section>
-        <div className="mx-auto max-w-5xl xl:max-w-6xl xxl:max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-5 xl:px-0">
+        <div className="mx-auto max-w-5xl xl:max-w-6xl xxl:max-w-7xl px-4 py-4 sm:px-6 sm:py-12 lg:px-5 xl:px-0">
           <div className="mt-4 lg:mt-8 w-full">
             <div className="products lg:col-span-4">
               {allproducts.productData?.length === 0 ? (
@@ -87,7 +87,7 @@ const Bundle: React.FC = () => {
                 </div>
               ) : (
                 <>
-                  <ul className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+                  <ul className="grid gap-4 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
                     {!loading ? (
                       <>
                         {bundleProducts?.map((data: any, index: number) => (
@@ -95,46 +95,36 @@ const Bundle: React.FC = () => {
                             key={index}
                             onClick={() => handleItemClick(String(data.id))}
                           >
-                            <div className="group mb-5 relative group w-full bg-white border border-gray-400 hover-border-2 hover:border-[#EC72AF] cursor-pointer">
+                            <div className="group mb-5 relative group w-full bg-white cursor-pointer rounded-2xl">
                               <img
-                                className="object-cover w-full min-h-56"
+                                className="object-contain sm:object-cover w-full min-h-56 rounded-2xl border-none sm:border-2 hover:border-[#EC72AF] transition-colors"
                                 src={data?.image.downloadURL}
-                                alt="products"
+                                alt="bundle"
                               />
 
-                              <div className="py-5 text-center">
-                                <h3 className="playfair mb-2 text-md sm:text-lg font-semibold text-gray-800">
-                                  {data?.name}
-                                </h3>
-
-                                <p className="mb-3 text-md text-gray-500">
-                                  (
-                                  {data.category === "Body Care"
-                                    ? "Bodycare"
-                                    : data.category}
-                                  )
-                                </p>
+                              <div className="-mt-5 sm:mt-0 py-0 sm:py-3 px-3 text-center flex justify-between flex-col sm:flex-row items-center">
+                                <div className="content flex justify-start gap-x-3 items-center">
+                                  <h3 className="playfair text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800">
+                                    {data?.name}
+                                  </h3>
+                                </div>
 
                                 {data.sale_price > 0 ? (
                                   <div className="flex justify-center items-center gap-2">
-                                    <p className="mb-3 text-md font-semibold text-black">
+                                    <p className="text-lg font-semibold text-red-600">
                                       Rs. {data.sale_price}
                                     </p>
-                                    <p className="mb-3 text-md font-semibold text-gray-500 line-through">
+                                    <p className="text-lg font-semibold text-gray-500 line-through">
                                       Rs. {data.price}
                                     </p>
                                   </div>
                                 ) : (
                                   <>
-                                    <p className="mb-3 text-md font-semibold text-black">
+                                    <p className="text-lg font-semibold text-black">
                                       Rs. {data.price}
                                     </p>
                                   </>
                                 )}
-
-                                <button className="hidden group-hover:block absolute w-28 sm:w-40 -bottom-5 left-0 right-0 text-sm mx-auto py-3 bg-[#EC72AF] text-white font-semibold">
-                                  Shop Now
-                                </button>
                               </div>
                             </div>
                           </li>

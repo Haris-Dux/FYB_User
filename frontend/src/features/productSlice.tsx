@@ -61,6 +61,20 @@ interface Image {
   type: string;
 }
 
+interface BundleDetails {
+  main_description: string;
+  main_heading: string;
+  product_details: ProductDetails[];
+  why_choose_us: string[]; 
+}
+
+export interface ProductDetails {
+  name: string;
+  description: string;
+  key_benefits: string[]; 
+  key_ingrediants: string; 
+}
+
 interface Product {
   id: string;
   name: string;
@@ -68,6 +82,7 @@ interface Product {
   image: Image;
   averageRating: number;
   description: string;
+  bundleDescription: BundleDetails;
   sale_price: number | undefined;
   price: number;
   stock: number;
